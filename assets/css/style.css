@@ -1,2 +1,15 @@
 /* Google fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins&family=Righteous&display=swap');
+
+/* General styles */
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100vh;
+    background-image: url("../images/download1.webp");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
