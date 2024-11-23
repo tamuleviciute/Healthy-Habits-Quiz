@@ -3,30 +3,39 @@
 
 /* General styles */
 
-body {
+body {background-image: url("../images/download8.webp"), url("../images/download8.webp");
+    background-repeat: no-repeat, no-repeat;
+    background-position: left center, right center;
+    background-size: 22% auto;
+    background-attachment: fixed;
     margin: 0;
     padding: 0;
+    height: 100vh;
     display: flex;
-    background: url("../images/download1.webp") no-repeat center fixed;
-    background-size: cover;
     font-family: "Poppins", sans-serif;
     font-weight: 400;
     font-style: normal;
 }
 
-h1 {
+.text {
     font-family: "Righteous", sans-serif;
     font-weight: 400;
     font-style: normal;
     text-align: center;
-    font-size: 4em;
+    font-size: 3em;
     font-weight: bold;
-    
+    color: rgb(53, 94, 59);
 }
 
 .icons {
     display: flex;
-    justify-content: space-evenly;
     align-items: center;
-    
+    justify-content: space-evenly;
 }
+.introduction-text {
+    text-align: center;
+    padding: 50px;
+    font-size: 1em;
+
+}
+
