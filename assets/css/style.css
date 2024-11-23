@@ -35,27 +35,30 @@ body {
     position: relative;
     height: 100px;
 }
-#home{
+
+#home {
     position: absolute;
     top: 45px;
     left: 300px;
 }
+
 #sound-on,
-#sound-off{
+#sound-off {
     position: absolute;
     top: 45px;
     right: 300px;
 }
-.hide{
+
+.hide {
     display: none;
 }
-
-
 
 /* Introduction section style properties */
 .introduction-text {
     text-align: center;
-    padding: 50px;
-    font-size: 1em;
-
+    margin-top: 20px;
+    margin-left: 320px;
+    margin-right: 320px;
+    font-size: 1.5em;
+    font-weight: 800;
 }
