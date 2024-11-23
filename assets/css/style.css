@@ -1,9 +1,10 @@
 /* Google fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins&family=Righteous&display=swap');
 
-/* General styles */
+/* General styles for the main page */
 
-body {background-image: url("../images/download8.webp"), url("../images/download8.webp");
+body {
+    background-image: url("../images/download8.webp"), url("../images/download8.webp");
     background-repeat: no-repeat, no-repeat;
     background-position: left center, right center;
     background-size: 22% auto;
@@ -17,6 +18,8 @@ body {background-image: url("../images/download8.webp"), url("../images/download
     font-style: normal;
 }
 
+/* H1 style properties */
+
 .text {
     font-family: "Righteous", sans-serif;
     font-weight: 400;
@@ -27,15 +30,32 @@ body {background-image: url("../images/download8.webp"), url("../images/download
     color: rgb(53, 94, 59);
 }
 
+/* Home, sound-on and sound-off icons style properties */
 .icons {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
+    position: relative;
+    height: 100px;
 }
+#home{
+    position: absolute;
+    top: 45px;
+    left: 300px;
+}
+#sound-on,
+#sound-off{
+    position: absolute;
+    top: 45px;
+    right: 300px;
+}
+.hide{
+    display: none;
+}
+
+
+
+/* Introduction section style properties */
 .introduction-text {
     text-align: center;
     padding: 50px;
     font-size: 1em;
 
 }
-
