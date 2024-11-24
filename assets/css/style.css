@@ -20,7 +20,7 @@ body {
 
 /* H1 style properties */
 
-.text {
+#text {
     font-family: "Righteous", sans-serif;
     font-weight: 400;
     font-style: normal;
@@ -32,31 +32,31 @@ body {
 
 /* Home, sound-on and sound-off icons style properties */
 .icons {
-    position: relative;
-    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    padding: 20px;
 }
 
-#home {
-    position: absolute;
-    top: 45px;
-    left: 300px;
+#home,
+#sound-on{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-
-#sound-on,
-#sound-off {
-    position: absolute;
-    top: 45px;
-    right: 300px;
-}
-
-.hide {
+#sound-off{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     display: none;
 }
+
 
 /* Introduction section style properties */
 .introduction-text {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 0;
     margin-left: 320px;
     margin-right: 320px;
     font-size: 1.5em;
@@ -81,20 +81,16 @@ body {
 }
 
 #rules {
-    position: fixed;
-    top: 450px;
-    left: 450px
+    position: relative;
+   
 }
 
 #scores {
-    position: fixed;
-    top: 450px;
-    right: 450px;
+    position: relative;
+   
 }
 
 #start {
-    position: fixed;
-    top: 550px;
-    left: 610px;
-    height: 100px;
+    position: relative;
+    
 }
