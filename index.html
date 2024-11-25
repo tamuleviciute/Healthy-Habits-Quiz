@@ -22,7 +22,7 @@
     <!-- Main content -->
     <main>
         <!-- Header section -->
-        <section>
+        <section class="introduction-area">
             <div class="icons">
                 <div id="home"><i class="fa-solid fa-house-chimney fa-2xl" style="color: rgb(53, 94, 59);"></i>
                 </div>
@@ -30,9 +30,10 @@
                     <h1>Healthy Habits Quiz</h1>
                 </div>
                 <div>
-                    <div id="sound-on"><i class="fa-solid fa-volume-high fa-2xl" style="color: rgb(53, 94, 59);"></i></div>
-                    <div id="sound-off"><i class="fa-solid fa-volume-xmark fa-2xl"
-                            style="color: rgb(53, 94, 59);"></i></div>
+                    <div id="sound-on"><i class="fa-solid fa-volume-high fa-2xl" style="color: rgb(53, 94, 59);"></i>
+                    </div>
+                    <div id="sound-off"><i class="fa-solid fa-volume-xmark fa-2xl" style="color: rgb(53, 94, 59);"></i>
+                    </div>
                 </div>
             </div>
             <!-- Introduction section -->
@@ -44,13 +45,28 @@
                     happier you <i class="fa-solid fa-heart-pulse fa-xl" style="color: rgb(53, 94, 59);"></i></p>
             </div>
             <!-- Buttons section -->
-        <div class="buttons-container">
-            <div><button class="button" id="rules" aria-label="Rules">Rules</button></div>
-            <div><button class="button" id="scores" aria-label="Scores">Scores</button></div>
-            <div><button class="button" id="start" aria-label="Start Quiz">Start Quiz</button></div>
-        </div>
+            <div class="buttons-container">
+                <div><button class="button" id="rules" aria-label="Rules">Rules</button></div>
+                <div><button class="button" id="scores" aria-label="Scores">Scores</button></div>
+                <div><button class="button" id="start" aria-label="Start Quiz">Start Quiz</button></div>
+            </div>
+        </section>
+
+        <!-- Questions section -->
+
+        <section class="quiz-area" style="display: none;">
+            <div class="questions-container">
+                <h2 id="question-text">Question</h2>
+                <div id="question-options">
+                    <button class="answer-button">Option 1</button>
+                    <button class="answer-button">Option 2</button>
+                    <button class="answer-button">Option 3</button>
+                    <button class="answer-button">Option 4</button>
+                </div>
+            </div>
 
         </section>
+
 
     </main>
     <!-- Font Awesome -->
