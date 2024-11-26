@@ -29,43 +29,43 @@ let score = 0;
 // Questions area
 
 const quizQuestions = [{
-    question: "What is the recommended amount of water to drink daily?",
+    question: "1. What is the recommended amount of water to drink daily?",
     options: ["1 liter", "2 liters", "3 liters", "4 liters"],
     correct: "2 liters"
 }, {
-    question: "What type of exercise improves flexibility?",
+    question: "2. What type of exercise improves flexibility?",
     options: ["Cardio", "Strength training", "Yoga", "Sprinting"],
     correct: "Yoga"
 }, {
-    question: "Which of these is considered a healthy source of fat?",
+    question: "3. Which of these is considered a healthy source of fat?",
     options: ["Butter", "Avocado", "French fries", "Ice cream"],
     correct: "Avocado"
 }, {
-    question: "How many hours of sleep is recommended for adults per night?",
+    question: "4. How many hours of sleep is recommended for adults per night?",
     options: ["4-5 hours", "6-7 hours", "7-8 hours", "10+ hours"],
     correct: "7-8 hours"
 }, {
-    question: "Which of these is the best way to reduce stress?",
+    question: "5. Which of these is the best way to reduce stress?",
     options: ["Watching TV for hours", "Drinking sugary beverages", "Practicing mindfulness or meditation", "Avoiding exercise"],
     correct: "Practicing mindfulness or meditation"
 }, {
-    question: "What is a good source of plant-based protein?",
+    question: "6. What is a good source of plant-based protein?",
     options: ["Chicken", "Almonds", "White bread", "Soda"],
     correct: "Almonds"
 }, {
-    question: "Which vitamin is primarily obtained from sunlight?",
+    question: "7. Which vitamin is primarily obtained from sunlight?",
     options: ["Vitamin A", "Vitamin C", "Vitamin D", "Vitamin E"],
     correct: "Vitamin D"
 }, {
-    question: "What food is rich in probiotics and good for gut health?",
+    question: "8. What food is rich in probiotics and good for gut health?",
     options: ["Chocolate", "Fermented vegetables (e.g., kimchi or sauerkraut)", "Chips", "Steak"],
-    correct: "Fermented vegetables (e.g., kimchi or sauerkraut"
+    correct: "Fermented vegetables (e.g., kimchi or sauerkraut)"
 }, {
-    question: "What is the main benefit of regular exercise?",
+    question: "9. What is the main benefit of regular exercise?",
     options: ["Only weight loss", "Improved mood and mental health", "Its a waste of time", "Decreases water retention"],
     correct: "Improved mood and mental health"
 }, {
-    question: "Which activity is best for mental wellness?",
+    question: "10. Which activity is best for mental wellness?",
     options: ["Reading a book", "Overeating", "Skipping meals", "Staying on social media all day"],
     correct: "Reading a book"
 }];
@@ -106,22 +106,30 @@ function displayQuestion(questionIndex) {
 }
 
 function checkAnswer(selectedOption, correctAnswer) {
-    if (selectedOption === correctAnswer) {
-        alert("Correct Answer!");
-        incrementScore();
-    } else {
-        alert(`Incorrect Answer! The correct answer is: ${correctAnswer}`);
-    }
+    const buttons = document.querySelectorAll(".answer-button");
+
+    buttons.forEach((button) => {
+
+        if (button.innerText === correctAnswer) {
+            button.classList.add("correct");
+        if (selectedOption === correctAnswer) incrementScore();
+        } else {
+            button.classList.add("incorrect");
+        }
+        button.disabled = true;
+    });
 
     // Moves to the next question
-
-    currentQuestionIndex++;
-    if (currentQuestionIndex < quizQuestions.length) {
-        displayQuestion(currentQuestionIndex);
-    } else {
-        endQuiz();
-    }
+    setTimeout(() => {
+        currentQuestionIndex++;
+        if (currentQuestionIndex < quizQuestions.length) {
+            displayQuestion(currentQuestionIndex);
+        } else {
+            endQuiz();
+        }
+    }, 5000);
 }
+
 
 function incrementScore() {
     score++;
@@ -129,8 +137,8 @@ function incrementScore() {
 
 function endQuiz() {
     const quizArea = document.querySelector(".quiz-area");
-    quizArea.innerHTML = 
-    `<h2>Quiz Complete</h2>
+    quizArea.innerHTML =
+        `<h2>Quiz Complete</h2>
     <p>Your score: ${score} out of ${quizQuestions.length}</p>
     <button onclick="resetQuiz()">Restart Quiz!</button>`;
 }
