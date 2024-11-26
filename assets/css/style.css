@@ -57,7 +57,7 @@ body {
 /* Introduction section style properties */
 .introduction-text {
     text-align: center;
-    margin: 0 auto;
+    margin: auto;
     padding: 0 20%;
     font-size: 1.5em;
     font-weight: 800;
@@ -90,7 +90,7 @@ body {
     color: black;
 }
 
-/* Questions section style properties*/
+/* Questions section style properties */
 
 .questions-container {
     text-align: center;
@@ -143,4 +143,25 @@ body {
     width: 250px;
     height: 150px;
     justify-content: center;
+}
+
+/* Rules section style properties */
+
+.rules-box {
+    text-align: center;
+    text-align: center;
+    margin: auto;
+    padding: 0 20%;
+    font-size: 1.5em;
+    font-weight: 800;
+}
+
+h2 {
+    font-family: "Righteous", sans-serif;
+}
+
+#good-luck {
+    font-size: 2em;
+    font-weight: bold;
+    color: rgb(53, 94, 59);
 }
