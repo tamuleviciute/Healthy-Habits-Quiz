@@ -88,6 +88,10 @@ function startQuiz() {
 function showRules() {
 
 }
+/**
+ * Display a question along with buttons for
+ * answer options.
+ */
 
 function displayQuestion(questionIndex) {
     const currentQuestion = quizQuestions[questionIndex];
@@ -105,6 +109,11 @@ function displayQuestion(questionIndex) {
     }
 }
 
+/**
+ * Checks answers and changes button
+ * color according to answer (correct, incorrect).
+ */
+
 function checkAnswer(selectedOption, correctAnswer) {
     const buttons = document.querySelectorAll(".answer-button");
 
@@ -112,14 +121,16 @@ function checkAnswer(selectedOption, correctAnswer) {
 
         if (button.innerText === correctAnswer) {
             button.classList.add("correct");
-        if (selectedOption === correctAnswer) incrementScore();
+            if (selectedOption === correctAnswer) incrementScore();
         } else {
             button.classList.add("incorrect");
         }
         button.disabled = true;
     });
 
-    // Moves to the next question
+    /**Moves to the next question and ends if the quiz is finished. 
+     * Sets time to show next question after click.
+     */
     setTimeout(() => {
         currentQuestionIndex++;
         if (currentQuestionIndex < quizQuestions.length) {
@@ -130,10 +141,15 @@ function checkAnswer(selectedOption, correctAnswer) {
     }, 5000);
 }
 
+// Counts score
 
 function incrementScore() {
     score++;
 }
+
+/** Ends quiz and displays score to the player.
+ * Shows a restart button to stat quiz again.
+ */
 
 function endQuiz() {
     const quizArea = document.querySelector(".quiz-area");
