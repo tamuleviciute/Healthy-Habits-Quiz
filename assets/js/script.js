@@ -82,23 +82,31 @@ function displayQuestion(questionIndex) {
     document.getElementById("question-text").innerText = currentQuestion.question;
 
     const optionsContainer = document.getElementById("answer-options");
-    optionsContainer.innerHTML = ""
+    optionsContainer.innerHTML = "";
 
     for (let option of currentQuestion.options) {
         const button = `<button class="answer-button"
-    onclick = "checkAnswer('${option}', '${currentQuestion.correct}', '${questionIndex}')">${option}</button>`;
+    onclick = "checkAnswer('${option}', '${currentQuestion.correct}')">${option}</button>`;
 
     optionsContainer.innerHTML += button;
 
         }
 }
 
-function checkAnswer() {
+function checkAnswer(selectedOption, correctAnswer) {
+    if (selectedOption === correctAnswer) {
+        alert("Correct Answer!");
+        incrementScore();
+    }
+    else {
+        alert (`Incorrect Answer! The correct answer is: ${correctAnswer}`);
+    }
 
 }
 
+let score = 0;
 function incrementScore() {
-
+    score ++;
 }
 
 function endQuiz() {
