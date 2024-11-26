@@ -43,14 +43,24 @@ body {
 #home,
 #sound-on {
     display: flex;
+    position: relative;
+    cursor: pointer;
     align-items: center;
     justify-content: center;
+    color: rgb(53, 94, 59);
+}
+#home:hover i,
+#sound-on:hover i {
+    color: black;
 }
 
 #sound-off {
     display: flex;
+    position: relative;
+    cursor: pointer;
     align-items: center;
     justify-content: center;
+    color: rgb(53, 94, 59);
     display: none;
 }
 

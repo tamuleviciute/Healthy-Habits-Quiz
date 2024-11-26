@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const rulesButton = document.getElementById("rules");
     const scoresButton = document.getElementById("scores");
     const startButton = document.getElementById("start");
+    const homeButton = document.getElementById("home");
 
     // Add an event (click) to each button
 
@@ -18,6 +19,9 @@ document.addEventListener("DOMContentLoaded", function () {
     startButton.addEventListener("click", function () {
         startQuiz();
     });
+    homeButton.addEventListener("click", function () {
+        goToHome();
+    })
 
 });
 
@@ -167,6 +171,13 @@ function endQuiz() {
 
 function resetQuiz() {
 
+}
+
+function goToHome () {
+    document.querySelector(".introduction-text").style.display = "block";
+    document.querySelector(".buttons-container").style.display = "flex";
+    document.querySelector(".rules-box").style.display = "none";
+    document.querySelector(".quiz-area").style.display = "none";
 }
 
 function toggleSound() {
