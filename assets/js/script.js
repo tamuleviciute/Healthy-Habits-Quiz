@@ -79,7 +79,18 @@ function showRules() {
 
 function displayQuestion(questionIndex) {
     const currentQuestion = quizQuestions[questionIndex];
-    document.getElementById("question-text").textContent = currentQuestion.question;
+    document.getElementById("question-text").innerText = currentQuestion.question;
+
+    const optionsContainer = document.getElementById("answer-options");
+    optionsContainer.innerHTML = ""
+
+    for (let option of currentQuestion.options) {
+        const button = `<button class="answer-button"
+    onclick = "checkAnswer('${option}', '${currentQuestion.correct}', '${questionIndex}')">${option}</button>`;
+
+    optionsContainer.innerHTML += button;
+
+        }
 }
 
 function checkAnswer() {
