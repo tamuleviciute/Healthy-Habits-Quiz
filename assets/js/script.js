@@ -21,6 +21,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
+// Global variables
+
+let currentQuestionIndex = 0;
+let score = 0;
+
 // Questions area
 
 const quizQuestions = [{
@@ -33,7 +38,7 @@ const quizQuestions = [{
     correct: "Yoga"
 }, {
     question: "Which of these is considered a healthy source of fat?",
-    options: ["Butter", "Avcado", "French fries", "Ice cream"],
+    options: ["Butter", "Avocado", "French fries", "Ice cream"],
     correct: "Avocado"
 }, {
     question: "How many hours of sleep is recommended for adults per night?",
@@ -54,7 +59,7 @@ const quizQuestions = [{
 }, {
     question: "What food is rich in probiotics and good for gut health?",
     options: ["Chocolate", "Fermented vegetables (e.g., kimchi or sauerkraut)", "Chips", "Steak"],
-    correct: "Fermented vegetables (e.g., kimchi or sauerkraut)"
+    correct: "Fermented vegetables (e.g., kimchi or sauerkraut"
 }, {
     question: "What is the main benefit of regular exercise?",
     options: ["Only weight loss", "Improved mood and mental health", "Its a waste of time", "Decreases water retention"],
@@ -62,9 +67,15 @@ const quizQuestions = [{
 }, {
     question: "Which activity is best for mental wellness?",
     options: ["Reading a book", "Overeating", "Skipping meals", "Staying on social media all day"],
-    correct: "Staying on social media all day"
+    correct: "Reading a book"
 }];
 
+// Functions area
+
+/**
+ * Starting quiz when a start quiz button is clicked and rules button, scores button,
+ * introduction text is hidden.
+ */
 
 function startQuiz() {
     document.querySelector(".introduction-text").style.display = "none";
@@ -88,25 +99,31 @@ function displayQuestion(questionIndex) {
         const button = `<button class="answer-button"
     onclick = "checkAnswer('${option}', '${currentQuestion.correct}')">${option}</button>`;
 
-    optionsContainer.innerHTML += button;
+        optionsContainer.innerHTML += button;
 
-        }
+    }
 }
 
 function checkAnswer(selectedOption, correctAnswer) {
     if (selectedOption === correctAnswer) {
         alert("Correct Answer!");
         incrementScore();
-    }
-    else {
-        alert (`Incorrect Answer! The correct answer is: ${correctAnswer}`);
+    } else {
+        alert(`Incorrect Answer! The correct answer is: ${correctAnswer}`);
     }
 
+    // Moves to next question
+
+    currentQuestionIndex++;
+    if (currentQuestionIndex < quizQuestions.length) {
+        displayQuestion(currentQuestionIndex);
+    } else {
+        endQuiz();
+    }
 }
 
-let score = 0;
 function incrementScore() {
-    score ++;
+    score++;
 }
 
 function endQuiz() {
