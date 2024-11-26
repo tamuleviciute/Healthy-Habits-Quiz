@@ -78,10 +78,11 @@ const quizQuestions = [{
  */
 
 function startQuiz() {
+    currentQuestionIndex = 0;
     document.querySelector(".introduction-text").style.display = "none";
     document.querySelector(".buttons-container").style.display = "none";
     document.querySelector(".quiz-area").style.display = "block";
-    displayQuestion(0)
+    displayQuestion(currentQuestionIndex)
 }
 
 function showRules() {
@@ -112,7 +113,7 @@ function checkAnswer(selectedOption, correctAnswer) {
         alert(`Incorrect Answer! The correct answer is: ${correctAnswer}`);
     }
 
-    // Moves to next question
+    // Moves to the next question
 
     currentQuestionIndex++;
     if (currentQuestionIndex < quizQuestions.length) {
@@ -127,7 +128,11 @@ function incrementScore() {
 }
 
 function endQuiz() {
-
+    const quizArea = document.querySelector(".quiz-area");
+    quizArea.innerHTML = 
+    `<h2>Quiz Complete</h2>
+    <p>Your score: ${score} out of ${quizQuestions.length}</p>
+    <button onclick="resetQuiz()">Restart Quiz!</button>`;
 }
 
 function resetQuiz() {
