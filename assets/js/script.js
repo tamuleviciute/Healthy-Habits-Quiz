@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Add an event (click) to each button
 
     rulesButton.addEventListener("click", function () {
-        alert("Rules for the Quiz!");
+        showRules();
     });
 
     scoresButton.addEventListener("click", function () {
@@ -85,8 +85,14 @@ function startQuiz() {
     displayQuestion(currentQuestionIndex)
 }
 
-function showRules() {
+/** Display rules page when 
+ * rules button is clicked.
+ */
 
+function showRules() {
+    document.querySelector(".introduction-text").style.display = "none";
+    document.querySelector(".buttons-container").style.display = "none";
+    document.querySelector(".rules-box").style.display = "block";
 }
 /**
  * Display a question along with buttons for
