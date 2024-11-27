@@ -149,7 +149,7 @@ function checkAnswer(selectedOption, correctAnswer) {
         } else {
             endQuiz();
         }
-    }, 3000);
+    }, 1000);
 }
 
 // Counts score
