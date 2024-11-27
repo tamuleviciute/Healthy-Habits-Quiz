@@ -49,6 +49,7 @@ body {
     justify-content: center;
     color: rgb(53, 94, 59);
 }
+
 #home:hover i,
 #sound-on:hover i {
     color: black;
@@ -112,6 +113,7 @@ body {
     font-size: 1.5em;
     font-weight: 800;
 }
+
 .quiz-area button {
     background-color: rgb(53, 94, 59);
     color: white;
@@ -122,6 +124,7 @@ body {
     height: 150px;
     justify-content: center;
 }
+
 .quiz-area button:hover {
     background-color: white;
     color: black;
@@ -198,4 +201,23 @@ h2 {
     font-size: 2em;
     font-weight: bold;
     color: rgb(53, 94, 59);
+}
+
+/* Score section style properties */
+
+.scores-box {
+    text-align: center;
+    margin: auto;
+    padding: 0 20%;
+    font-size: 1.5em;
+    font-weight: 800;
+}
+
+#scores-list {
+    list-style: none;
+    text-align: center;
+    margin: auto;
+    padding: 0 20%;
+    font-size: 1.5em;
+    font-weight: 800;
 }

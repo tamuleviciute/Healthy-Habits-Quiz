@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     scoresButton.addEventListener("click", function () {
-        alert("Your Scores!");
+        showScores();
     });
 
     startButton.addEventListener("click", function () {
@@ -122,6 +122,7 @@ function startQuiz() {
     document.querySelector(".introduction-text").style.display = "none";
     document.querySelector(".buttons-container").style.display = "none";
     document.querySelector(".quiz-area").style.display = "block";
+    document.querySelector(".scores-box").style.display = "none";
     displayQuestion(currentQuestionIndex);
 }
 
@@ -133,6 +134,7 @@ function showRules() {
     document.querySelector(".introduction-text").style.display = "none";
     document.querySelector(".buttons-container").style.display = "none";
     document.querySelector(".rules-box").style.display = "block";
+    document.querySelector(".scores-box").style.display = "none";
 }
 /**
  * Display a question along with buttons for
@@ -216,6 +218,8 @@ function endQuiz() {
     const quizArea = document.querySelector(".quiz-area");
     let restartSound = new Audio("assets/sounds/button_click.wav");
 
+    saveScore(score);
+
     quizArea.innerHTML =
         `<h2>Quiz Complete</h2>
     <p>Your score: ${score} out of ${quizQuestions.length}</p>
@@ -244,13 +248,44 @@ function resetQuiz() {
 
     document.querySelector(".introduction-text").style.display = "block";
     document.querySelector(".buttons-container").style.display = "flex";
-    quizArea.style.display = "none";
+    document.querySelector(".quiz-area").style.display = "none";
+    document.querySelector(".scores-box").style.display = "none";
 }
-
 
 function goToHome() {
     document.querySelector(".introduction-text").style.display = "block";
     document.querySelector(".buttons-container").style.display = "flex";
     document.querySelector(".rules-box").style.display = "none";
     document.querySelector(".quiz-area").style.display = "none";
+    document.querySelector(".scores-box").style.display = "none";
+    
+}
+
+function saveScore(score) {
+    let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+    highScores.push(score);
+    highScores.sort((a, b) => b - a);
+    highScores = highScores.slice(0, 5);
+    localStorage.setItem("highScores", JSON.stringify(highScores));
+}
+
+function getHighScores() {
+    return JSON.parse(localStorage.getItem("highScores")) || [];
+}
+
+function showScores() {
+    const scoresBox = document.querySelector(".scores-box");
+    const scoresList = document.getElementById("scores-list");
+
+    const highScores = getHighScores();
+
+    scoresList.innerHTML = highScores
+    .map(score => `<li>Score: ${score}</li>`)
+    .join("");
+
+    document.querySelector(".introduction-text").style.display = "none";
+    document.querySelector(".buttons-container").style.display = "none";
+    document.querySelector(".rules-box").style.display = "none";
+    document.querySelector(".quiz-area").style.display = "none";
+    document.querySelector(".scores-box").style.display = "block";
 }
