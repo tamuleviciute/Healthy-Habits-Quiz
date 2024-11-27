@@ -4,10 +4,7 @@ The **Healthy Habits Quiz** is an interactive, web-based application designed to
 
 This project builds upon the lessons learned from my first project, focusing on enhancing user interactivity, responsiveness, and overall functionality. With this project, I aim to showcase my growth as a developer while delivering a meaningful and enjoyable experience to users.
 
-![Screens]
-
----
-
+![Screens](assets/media/Screenshot 2024-11-27 at 12.37.03.png)
 
 ---
 
