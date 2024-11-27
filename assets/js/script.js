@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     homeButton.addEventListener("click", function () {
         goToHome();
-    })
+    });
 
 });
 
@@ -83,10 +83,11 @@ const quizQuestions = [{
 
 function startQuiz() {
     currentQuestionIndex = 0;
+    score = 0;
     document.querySelector(".introduction-text").style.display = "none";
     document.querySelector(".buttons-container").style.display = "none";
     document.querySelector(".quiz-area").style.display = "block";
-    displayQuestion(currentQuestionIndex)
+    displayQuestion(currentQuestionIndex);
 }
 
 /** Display rules page when 
@@ -105,9 +106,9 @@ function showRules() {
 
 function displayQuestion(questionIndex) {
     const currentQuestion = quizQuestions[questionIndex];
-    document.getElementById("question-text").innerText = currentQuestion.question;
-
+    const questionText = document.getElementById("question-text");
     const optionsContainer = document.getElementById("answer-options");
+    questionText.innerText = currentQuestion.question;
     optionsContainer.innerHTML = "";
 
     for (let option of currentQuestion.options) {
@@ -116,7 +117,7 @@ function displayQuestion(questionIndex) {
 
         optionsContainer.innerHTML += button;
 
-    }
+    };
 }
 
 /**
@@ -148,7 +149,7 @@ function checkAnswer(selectedOption, correctAnswer) {
         } else {
             endQuiz();
         }
-    }, 5000);
+    }, 3000);
 }
 
 // Counts score
@@ -170,10 +171,22 @@ function endQuiz() {
 }
 
 function resetQuiz() {
+    currentQuestionIndex = 0;
+    score = 0;
 
+    const quizArea = document.querySelector(".quiz-area");
+    quizArea.innerHTML = `<div class="questions-container">
+                <h3 id="question-text"></h3>
+                <div id="answer-options"></div>
+            </div>`;
+    
+    document.querySelector(".introduction-text").style.display = "block";
+    document.querySelector(".buttons-container").style.display = "flex";
+    quizArea.style.display = "none";
 }
 
-function goToHome () {
+
+function goToHome() {
     document.querySelector(".introduction-text").style.display = "block";
     document.querySelector(".buttons-container").style.display = "flex";
     document.querySelector(".rules-box").style.display = "none";
