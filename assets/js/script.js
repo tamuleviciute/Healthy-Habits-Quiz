@@ -1,6 +1,7 @@
 // Wait for the page to fully load before running the quiz
 
-document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("DOMContentLoaded", function () {
+        
     const rulesButton = document.getElementById("rules");
     const scoresButton = document.getElementById("scores");
     const startButton = document.getElementById("start");
@@ -201,7 +202,7 @@ function checkAnswer(selectedOption, correctAnswer) {
         } else {
             endQuiz();
         }
-    }, 1000);
+    }, 3000);
 }
 
 // Counts score
