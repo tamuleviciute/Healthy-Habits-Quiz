@@ -5,6 +5,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const scoresButton = document.getElementById("scores");
     const startButton = document.getElementById("start");
     const homeButton = document.getElementById("home");
+    const soundOnIcon = document.getElementById("sound-on");
+    const soundOffIcon = document.getElementById("sound-off");
 
     // Add an event (click) to each button
 
@@ -22,13 +24,30 @@ document.addEventListener("DOMContentLoaded", function () {
     homeButton.addEventListener("click", function () {
         goToHome();
     });
-
+    soundOnIcon.addEventListener("click", function () {
+        toggleSound();
+    });
+    soundOffIcon.addEventListener("click", function () {
+        toggleSound();
+    });
+    
+    let clickSound = new Audio("assets/sounds/button_click.wav");
+    const buttons = document.querySelectorAll("#home, #rules, #score, #start");
+    buttons.forEach(button => {
+        button.addEventListener("click", () => {
+            if (!isMuted) {
+            clickSound.currentTime = 0;
+            clickSound.play();
+            }
+        });
+    });
 });
 
 // Global variables
 
 let currentQuestionIndex = 0;
 let score = 0;
+let isMuted = false;
 
 // Questions area
 
@@ -75,6 +94,22 @@ const quizQuestions = [{
 }];
 
 // Functions area
+
+function toggleSound() {
+    isMuted = !isMuted;
+
+    const soundOnIcon = document.getElementById("sound-on");
+    const soundOffIcon = document.getElementById("sound-off");
+
+    if (isMuted) {
+        soundOnIcon.style.display = "none";
+        soundOffIcon.style.display = "flex";
+    } else {
+        soundOnIcon.style.display = "flex";
+        soundOffIcon.style.display = "none";
+    };
+
+}
 
 /**
  * Starting quiz when a start quiz button is clicked and rules button, scores button,
@@ -127,14 +162,29 @@ function displayQuestion(questionIndex) {
 
 function checkAnswer(selectedOption, correctAnswer) {
     const buttons = document.querySelectorAll(".answer-button");
+    let correctSound = new Audio("assets/sounds/success-alert.wav");
+    let incorrectSound = new Audio("assets/sounds/error-alert-1.wav");
 
     buttons.forEach((button) => {
 
         if (button.innerText === correctAnswer) {
             button.classList.add("correct");
-            if (selectedOption === correctAnswer) incrementScore();
+            if (selectedOption === correctAnswer) {
+                if (!isMuted) {
+                correctSound.currentTime = 0;
+                correctSound.play();
+                }
+                incrementScore();
+            }
+
         } else {
             button.classList.add("incorrect");
+            if (button.innerText === selectedOption) {
+                if (!isMuted) {
+                incorrectSound.currentTime = 0;
+                incorrectSound.play();
+                }
+            }
         }
         button.disabled = true;
     });
@@ -164,10 +214,22 @@ function incrementScore() {
 
 function endQuiz() {
     const quizArea = document.querySelector(".quiz-area");
+    let restartSound = new Audio("assets/sounds/button_click.wav");
+
     quizArea.innerHTML =
         `<h2>Quiz Complete</h2>
     <p>Your score: ${score} out of ${quizQuestions.length}</p>
-    <button onclick="resetQuiz()">Restart Quiz!</button>`;
+    <button id="restart-button" onclick="resetQuiz()">Restart Quiz!</button>`;
+
+    const restartButton = document.getElementById("restart-button");
+    restartButton.addEventListener("click", () => {
+        if (!isMuted) {
+        restartSound.currentTime = 0;
+        restartSound.play();
+        }
+        resetQuiz();
+    });
+
 }
 
 function resetQuiz() {
@@ -179,7 +241,7 @@ function resetQuiz() {
                 <h3 id="question-text"></h3>
                 <div id="answer-options"></div>
             </div>`;
-    
+
     document.querySelector(".introduction-text").style.display = "block";
     document.querySelector(".buttons-container").style.display = "flex";
     quizArea.style.display = "none";
@@ -191,8 +253,4 @@ function goToHome() {
     document.querySelector(".buttons-container").style.display = "flex";
     document.querySelector(".rules-box").style.display = "none";
     document.querySelector(".quiz-area").style.display = "none";
-}
-
-function toggleSound() {
-
 }
